@@ -12,18 +12,22 @@ Toy.delete_all
 User.delete_all
 puts"Create new users..."
 5.times do
-    User.create!(
+    user = User.create!(
         email: "#{Faker::Music.chord}@gmail.com", 
         password: '1fowest1'
     )
+    60.times do 
+        
+    end
 end
 users = User.all
 puts "#{User.count} users created"
 puts "Creating the Toys..."
+prices = (1..100).to_a
 100.times do
     Toy.create!(
         name: Faker::Games::Pokemon.name, 
-        price: (1..100).to_a.sample.to_f, 
+        price: prices.sample.to_f, 
         user: users.sample
     )
 end
