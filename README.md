@@ -5,7 +5,7 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 {
   run bundle install
   run db:create db:migrate
-  yearn install
+  yarn install
   server s
   yarn build --watch
 }
