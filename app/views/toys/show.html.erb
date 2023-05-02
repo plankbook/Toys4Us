@@ -1,2 +1,3 @@
-<h1>My Toy</h1>
+"<h1>My Toy</h1>
 <%= @toy.name %>
+<%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

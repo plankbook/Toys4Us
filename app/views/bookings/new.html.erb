@@ -1,0 +1,7 @@
+<h1>Create a New Booking</h1>
+
+<%= simple_form_for [@toy, @booking] do |f| %>
+  <%= f.input :start_date, label: 'Start Date' %>
+  <%= f.input :end_date, label: 'End Date' %>
+  <%= f.button :submit %>
+<% end %>
