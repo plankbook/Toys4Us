@@ -4,6 +4,7 @@
   <% @toys.each do |toy| %>
     <li>
       <%= toy.name %>
+      <%= link_to "Delete Toy", toy_path(toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </li>
   <% end %>
 </ul>
