@@ -1,6 +1,8 @@
-<h1>Toy</h1>
-<%= @toy.name %>
-<%= @toy.description %>
-<%= @toy.price %>
-<%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<%= link_to "Update Toy", edit_toy_path(@toy) %>
+<div class='container'>
+  <h1><%= @toy.name %></h1>
+  <p><%= "Description: #{@toy.description}" %></p>
+  <p><%= "Price: #{@toy.price}" %></p>
+  <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <%= link_to "Update Toy", edit_toy_path(@toy) %>
+  <%= link_to "Back to My Toys", toys_path %>
+</div>
