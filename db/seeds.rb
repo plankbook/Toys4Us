@@ -13,11 +13,11 @@ User.delete_all
 puts"Create new users..."
 5.times do
     user = User.create!(
-        email: "#{Faker::Music.chord}@gmail.com", 
+        email: "#{Faker::Music.chord}@gmail.com",
         password: '1fowest1'
     )
-    60.times do 
-        
+    60.times do
+
     end
 end
 users = User.all
@@ -26,21 +26,23 @@ puts "Creating the Toys..."
 prices = (1..100).to_a
 100.times do
     Toy.create!(
-        name: Faker::Games::Pokemon.name, 
-        price: prices.sample.to_f, 
-        user: users.sample
+        name: Faker::Games::Pokemon.name,
+        price: prices.sample.to_f,
+        user: users.sample,
+        description: "test"
     )
 end
 toys = Toy.all
 puts "#{toys.count} toys created"
 puts"Creating Bookings..."
 10.times do
-    Booking.create!(
-        start_date: Faker::Date.between(from: '2021-09-23', to: '2022-09-25'),
-        end_date: :start_date,
-        toy: toys.sample,
-        user: users.sample
-    )
+  date = Faker::Date.between(from: '2021-09-23', to: '2022-09-25')
+  Booking.create!(
+      start_date: date,
+      end_date: date + 1,
+      toy: toys.sample,
+      user: users.sample
+  )
 end
 bookings = Booking.all
 puts "#{bookings.count} bookings created"

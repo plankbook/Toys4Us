@@ -1,0 +1,11 @@
+<h1>My Bookings</h1>
+
+<ul>
+  <% @user_bookings.each do |booking| %>
+    <%= "Booking for #{booking.toy.name}" %>
+    <%= "Booking Start Date #{booking.start_date}" %>
+    <%= "Booking End Date #{booking.end_date}" %>
+  <% end %>
+</ul>
+
+<%= link_to "Back Home", root_path %>

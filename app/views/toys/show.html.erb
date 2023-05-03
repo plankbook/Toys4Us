@@ -1,3 +1,6 @@
-"<h1>My Toy</h1>
+<h1>Toy</h1>
 <%= @toy.name %>
+<%= @toy.description %>
+<%= @toy.price %>
 <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<%= link_to "Update Toy", edit_toy_path(@toy) %>
