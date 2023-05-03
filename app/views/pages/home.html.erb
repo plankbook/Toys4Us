@@ -1,39 +1,52 @@
+<% if user_signed_in? %>
+  <h2>Hi <%= current_user.email %>!</h2>
+<% end %>
 
-# <h1>Toys4Us Banner (To Do)</h1>
-# 
-# <% if user_signed_in? %>
-#     <h2>Hi <%= current_user.email %>!</h2>
-# <% end %>
-# 
-# <h2>Here are all the available toys! Book and play 😁</h2>
-# 
-# <ul>
-#   <% @available_toys.each do |toy| %>
-#     <li>
-#       <%= link_to toy.name, toy_path(toy) %>
-#       <%= toy.description %>
-#       <%= toy.price %>
-#       <%= toy.listed %>
-#       <%= toy.user.email %>
-#       <%= link_to "Book", new_toy_booking_path(toy) %>
-#     </li>
-#   <% end %>
-# </ul>
+
+<ul>
+  <%# @available_toys.each do |toy| %>
+    <%# <li> %>
+      <%#= link_to toy.name, toy_path(toy) %>
+      <%#= toy.description %>
+      <%#= toy.price %>
+      <%#= toy.listed %>
+      <%#= toy.user.email %>
+      <%#= link_to "Book", new_toy_booking_path(toy) %>
+    <%# </li> %>
+</ul>
 
 <%# <%= link_to "Write a story", "#", class: "btn btn-ghost" %>
 <%# <%= link_to "Book now", "#", class: "btn btn-flat" %>
 <%# <%= link_to "Start now", "#", class: "btn btn-gradient" %>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(banner-background.jpg);">
   <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+    <h1>Are you <strong>sad</strong> and <strong>lonely</strong>?</h1>
+    <p>Try renting one of our toys so that you don't feel it!</p>
+    <a class="btn btn-flat" href="#">Show all toys</a>
+    <br>
+    <br>
+    <div class='disc'>
+      <p>Disclaimer: Our toys will not make you less sad and lonely. Feelings of a less sad and lonely existence for a short while due to emotions induced by playing with Toys4Us toys shall not imply that Hellscape Enterprises, the parent company of Toys4Us, will be the holder of legal liability. Looking at this page for more than 1 second will be registered as consent that you are hereby and herewith accepting full responsibility. This is hereby 100% legally binding. And herewith.</p>
+    </div>
   </div>
 </div>
 
 <div class="cards">
+  <% @available_toys.each do |toy| %>
   <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= link_to toy.name, toy_path(toy) %></h2>
+        <p><%= toy.description %></p>
+      </div>
+      <h2 class="card-trip-pricing">$ <%= toy.price %></h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  <% end %>
+  </div>
+  <%# <div class="card-trip">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
     <div class="card-trip-infos">
       <div>
@@ -54,18 +67,7 @@
       <h2 class="card-trip-pricing">£99.99</h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     </div>
-  </div>
-  <div class="card-trip">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-    <div class="card-trip-infos">
-      <div>
-        <h2>Title here</h2>
-        <p>Short description here!</p>
-      </div>
-      <h2 class="card-trip-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-    </div>
-  </div>
+  </div> %>
 </div>
 
 <div class="footer">
