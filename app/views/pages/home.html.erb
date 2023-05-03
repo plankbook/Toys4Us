@@ -1,20 +1,82 @@
-<h1>Toys4Us Banner (To Do)</h1>
 
-<% if user_signed_in? %>
-    <h2>Hi <%= current_user.email %>!</h2>
-<% end %>
+# <h1>Toys4Us Banner (To Do)</h1>
+# 
+# <% if user_signed_in? %>
+#     <h2>Hi <%= current_user.email %>!</h2>
+# <% end %>
+# 
+# <h2>Here are all the available toys! Book and play 😁</h2>
+# 
+# <ul>
+#   <% @available_toys.each do |toy| %>
+#     <li>
+#       <%= link_to toy.name, toy_path(toy) %>
+#       <%= toy.description %>
+#       <%= toy.price %>
+#       <%= toy.listed %>
+#       <%= toy.user.email %>
+#       <%= link_to "Book", new_toy_booking_path(toy) %>
+#     </li>
+#   <% end %>
+# </ul>
 
-<h2>Here are all the available toys! Book and play 😁</h2>
+<%# <%= link_to "Write a story", "#", class: "btn btn-ghost" %>
+<%# <%= link_to "Book now", "#", class: "btn btn-flat" %>
+<%# <%= link_to "Start now", "#", class: "btn btn-gradient" %>
 
-<ul>
-  <% @available_toys.each do |toy| %>
-    <li>
-      <%= link_to toy.name, toy_path(toy) %>
-      <%= toy.description %>
-      <%= toy.price %>
-      <%= toy.listed %>
-      <%= toy.user.email %>
-      <%= link_to "Book", new_toy_booking_path(toy) %>
-    </li>
-  <% end %>
-</ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+    <a class="btn btn-flat" href="#">Apply now</a>
+  </div>
+</div>
+
+<div class="cards">
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>Title here</h2>
+        <p>Short description here!</p>
+      </div>
+      <h2 class="card-trip-pricing">£99.99</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>Title here</h2>
+        <p>Short description here!</p>
+      </div>
+      <h2 class="card-trip-pricing">£99.99</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2>Title here</h2>
+        <p>Short description here!</p>
+      </div>
+      <h2 class="card-trip-pricing">£99.99</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
+</div>
