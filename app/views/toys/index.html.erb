@@ -3,7 +3,7 @@
 <ul>
   <% @user_toys.each do |toy| %>
     <li>
-      <%= toy.name %>
+      <%= link_to toy.name, toy_path(toy) %>
       <%= link_to "Delete Toy", toy_path(toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </li>
   <% end %>
