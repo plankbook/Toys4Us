@@ -1,5 +1,20 @@
-<h1>Welcome to your Dashboard</h1>
-<h1>Here are all your Toys</h1>
+<h1>Toys4Us Banner (To Do)</h1>
+
 <% if user_signed_in? %>
     <h2>Hi <%= current_user.email %>!</h2>
 <% end %>
+
+<h2>Here are all the available toys! Book and play 😁</h2>
+
+<ul>
+  <% @available_toys.each do |toy| %>
+    <li>
+      <%= link_to toy.name, toy_path(toy) %>
+      <%= toy.description %>
+      <%= toy.price %>
+      <%= toy.listed %>
+      <%= toy.user.email %>
+      <%= link_to "Book", new_toy_booking_path(toy) %>
+    </li>
+  <% end %>
+</ul>
