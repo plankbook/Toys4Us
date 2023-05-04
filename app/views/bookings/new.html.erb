@@ -1,7 +1,10 @@
-<h1>Create a New Booking</h1>
+<div class='container'>
+  <h1><%= "You're about to book #{@toy.name}" %></h1>
 
-<%= simple_form_for [@toy, @booking] do |f| %>
-  <%= f.input :start_date, label: 'Start Date' %>
-  <%= f.input :end_date, label: 'End Date' %>
-  <%= f.button :submit %>
-<% end %>
+  <%= simple_form_for [@toy, @booking] do |f| %>
+    <%= f.input :start_date, label: 'Start Date' %>
+    <%= f.input :end_date, label: 'End Date' %>
+    <%= f.button :submit %>
+  <% end %>
+
+</div>
