@@ -20,6 +20,10 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.disc p {
+  font-size: 8px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
