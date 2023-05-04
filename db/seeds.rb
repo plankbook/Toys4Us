@@ -15,8 +15,8 @@ User.delete_all
 
 puts "Loading the image..."
 file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
-toy = Toy.new(title: "NES", body: "A great console")
-toy.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+toy = Toy.new(name: "NES", description: "A great console", price: 100.00)
+toy.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 toy.save
 
 puts"Create new users..."
