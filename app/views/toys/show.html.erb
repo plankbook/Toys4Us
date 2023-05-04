@@ -8,7 +8,10 @@
 <div class='container'>
   <h1><%= @toy.name %></h1>
   <p><%= "Description: #{@toy.description}" %></p>
-  <p><%= "Price: #{@toy.price}" %></p>
+  <p><% if @toy.listed %>
+      <%= p "This toy is listed for bookings and it costs $#{@toy.price}." %>
+    <% end %>
+  </p>
   <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <%= link_to "Update Toy", edit_toy_path(@toy) %>
   <%= link_to "Book Toy", new_toy_booking_path(@toy) %>

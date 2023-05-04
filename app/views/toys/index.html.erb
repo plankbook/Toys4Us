@@ -1,12 +1,18 @@
-<h1>My Toys</h1>
+<div class='container'>
+  <h1>My Toys</h1>
 
-<ul>
-  <% @user_toys.each do |toy| %>
-    <li>
-      <%= link_to toy.name, toy_path(toy) %>
-      <%= link_to "Delete Toy", toy_path(toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @user_toys.each do |toy| %>
+      <li>
+        <%= link_to toy.name, toy_path(toy) %>
+        <% if toy.listed %>
+          <%= p 'This toy is listed for bookings.' %>
+        <% end %>
+        <%= link_to "Delete Toy", toy_path(toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </li>
+    <% end %>
+  </ul>
 
-<%= link_to "Create a New Toy", new_toy_path %>
+  <%= link_to "Create a New Toy", new_toy_path %>
+
+</div>
