@@ -24,11 +24,16 @@
   font-size: 8px;
 }
 
+.main-container {
+  display: flex;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   padding: 10px;
+  flex-grow: 1;
 }
 
 // Smallest device
