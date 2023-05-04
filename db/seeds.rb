@@ -5,11 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
 require 'faker'
+
 puts "Database clean-up"
 Booking.delete_all
 Toy.delete_all
 User.delete_all
+
+puts "Loading the image..."
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+toy = Toy.new(title: "NES", body: "A great console")
+toy.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+toy.save
+
 puts"Create new users..."
 5.times do
     user = User.create!(

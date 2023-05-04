@@ -5,6 +5,7 @@
     <%= f.input :name, label: 'Toy Name', error: 'Toy Name is mandatory, please specify one' %>
     <%= f.input :description, label: 'Toy Description' %>
     <%= f.input :price, label: 'Price' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit %>
   <% end %>
 </div>
