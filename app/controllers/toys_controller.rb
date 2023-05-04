@@ -1,10 +1,10 @@
 class ToysController < ApplicationController
   def index
-    @toys = current_user.toys.all
+    @user_toys = Toy.where(user: current_user)
   end
 
   def show
-    @toy = current_user.toys.find(params[:id])
+    @toy = Toy.find(params[:id])
   end
 
   def new

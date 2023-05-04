@@ -1,10 +1,12 @@
 <h1>My Toys</h1>
 
 <ul>
-  <% @toys.each do |toy| %>
+  <% @user_toys.each do |toy| %>
     <li>
-      <%= toy.name %>
+      <%= link_to toy.name, toy_path(toy) %>
       <%= link_to "Delete Toy", toy_path(toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to "Create a New Toy", new_toy_path %>

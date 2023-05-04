@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+
+  def index
+    @user_bookings = Booking.where(user: current_user)
+  end
+
   def new
     @booking = Booking.new
     @toy = Toy.find(params[:toy_id])

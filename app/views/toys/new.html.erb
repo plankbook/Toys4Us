@@ -1,9 +1,11 @@
-<h1>Create a New Toy</h1>
+<div class='container'>
+  <h1>Create a New Toy</h1>
 
-<%= simple_form_for @toy do |f| %>
-  <%= f.input :name, label: 'Toy Name', error: 'Toy Name is mandatory, please specify one' %>
-  <%= f.input :description, label: 'Toy Description' %>
-  <%= f.input :price, label: 'Price' %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
+  <%= simple_form_for @toy do |f| %>
+    <%= f.input :name, label: 'Toy Name', error: 'Toy Name is mandatory, please specify one' %>
+    <%= f.input :description, label: 'Toy Description' %>
+    <%= f.input :price, label: 'Price' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
