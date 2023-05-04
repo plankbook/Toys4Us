@@ -1,7 +1,3 @@
-<% if user_signed_in? %>
-  <h2>Hi <%= current_user.email %>!</h2>
-<% end %>
-
 
 <%# <ul> %>
   <%# @available_toys.each do |toy| %>
@@ -21,7 +17,12 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(banner-background.jpg);">
   <div class="container">
-    <h1>Are you <strong>sad</strong> and <strong>lonely</strong>?</h1>
+    <h1>
+      <% if user_signed_in? %>
+        Hi <%= current_user.email %>!
+      <% end %>
+      Are you <strong>sad</strong> and <strong>lonely</strong>?
+    </h1>
     <p>Try renting one of our toys so that you don't feel it!</p>
     <a class="btn btn-flat" href="#all-toys">Show all toys</a>
     <br>
