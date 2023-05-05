@@ -4,6 +4,9 @@
   <ul>
     <% @user_toys.each do |toy| %>
       <li>
+        <% toy.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 90, width: 90, crop: :fill %>
+        <% end %>
         <%= link_to toy.name, toy_path(toy) %>
         <% if toy.listed %>
           <%= p 'This toy is listed for bookings.' %>

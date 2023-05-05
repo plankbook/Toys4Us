@@ -37,7 +37,10 @@
   <div class="cards" id='all-toys'>
     <% @available_toys.each do |toy| %>
       <div class="card-trip">
-        <img src="https://cdn.shopify.com/s/files/1/0694/6747/2189/products/youeni-plushies-plush-softtoy-moody-banana-plush-new-soft-toy06_1024x1024.jpg" />
+
+        <% toy.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill %>
+        <% end %>
         <div class="card-trip-infos">
           <div>
             <h2><%= link_to toy.name, toy_path(toy) %></h2>
