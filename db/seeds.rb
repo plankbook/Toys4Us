@@ -13,11 +13,6 @@ Booking.delete_all
 Toy.delete_all
 User.delete_all
 
-puts "Loading the image..."
-file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
-toy = Toy.new(name: "NES", description: "A great console", price: 100.00)
-toy.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-toy.save
 
 puts"Create new users..."
 5.times do
@@ -41,6 +36,12 @@ prices = (1..100).to_a
         description: "test"
     )
 end
+
+puts "Loading the image..."
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+toy = Toy.create!(user: users.sample, name: "NES", description: "A great console", price: 100.00)
+toy.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+
 toys = Toy.all
 puts "#{toys.count} toys created"
 puts"Creating Bookings..."
