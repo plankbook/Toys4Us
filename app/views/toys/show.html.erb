@@ -6,6 +6,9 @@
 <%#= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 
 <div class='container'>
+  <% @toy.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <h1><%= @toy.name %></h1>
   <p><%= "Description: #{@toy.description}" %></p>
   <p><% if @toy.listed %>
@@ -16,4 +19,5 @@
   <%= link_to "Update Toy", edit_toy_path(@toy) %>
   <%= link_to "Book Toy", new_toy_booking_path(@toy) %>
   <%= link_to "Back to My Toys", toys_path %>
+<%# raise %>
 </div>
