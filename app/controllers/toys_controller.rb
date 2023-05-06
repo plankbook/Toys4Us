@@ -28,8 +28,10 @@ class ToysController < ApplicationController
 
   def update
     @toy = Toy.find(params[:id])
-    @toy.update(toy_params)
-    if @toy.save
+    variant = @toy.photos
+    @toy.photos.attach(params[:photos])
+    if @toy.update(toy_params)
+      @toy.photos.push(variant)
       redirect_to toy_path(@toy)
     else
       render :edit, status: :unprocessable_entity
