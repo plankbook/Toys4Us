@@ -1,12 +1,22 @@
 <div class='container'>
-<h1>My Bookings</h1>
-  <ul>
-    <% @user_bookings.each do |booking| %>
-    <li>
-      <%= "You have booked #{booking.toy.name} between #{booking.start_date} and #{booking.end_date}" %>
-    </li>
-    <% end %>
-  </ul>
+<h1>You've booked the following toys. Have fun!</h1>
+</div>
 
-  <%= link_to "Back Home", root_path %>
+<div class='container'>
+  <div class="cards" id='all-toys'>
+    <% @user_bookings.each do |booking| %>
+      <div class="card-trip">
+        <% booking.toy.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to booking.toy.name, toy_path(booking.toy) %></h2>
+            <p>Between <%= booking.start_date %> and <%= booking.end_date %></p>
+          </div>
+          <img src="https://i.stack.imgur.com/RoPPo.jpg" class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
+      <% end %>
+  </div>
 </div>
