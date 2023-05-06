@@ -2,7 +2,8 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 45vh 0;
+  height: 100vh;
+  padding: 50px 0;
 }
 
 .banner h1 {
@@ -18,6 +19,19 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+#logo {
+  font-family: 'Rubik Moonrocks', cursive;;
+  font-size: 200px;
+  text-align: center;
+  color:#3f1164;
+  text-shadow: 5px 5px 3px rgba(197, 162, 162, 0.5);
+  margin-top: 100px;
+  margin-bottom: 150px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-style: solid;
+  border-radius: 110px;
 }
 
 .disc p {

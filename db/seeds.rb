@@ -13,7 +13,12 @@ Booking.delete_all
 Toy.delete_all
 User.delete_all
 
+<<<<<<< HEAD
+
+puts"Create new users..."
+=======
 puts "Create new users..."
+>>>>>>> 959d3c25bafdf1164544e959a7d91cbacccc5c35
 5.times do
   User.create!(
     email: "#{Faker::Music.chord}@gmail.com",
@@ -24,6 +29,21 @@ users = User.all
 puts "#{User.count} users created"
 
 prices = (1..100).to_a
+<<<<<<< HEAD
+100.times do
+    Toy.create!(
+        name: Faker::Games::Pokemon.name,
+        price: prices.sample.to_f,
+        user: users.sample,
+        description: "test"
+    )
+end
+
+puts "Loading the image..."
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+toy = Toy.create!(user: users.sample, name: "NES", description: "A great console", price: 100.00)
+toy.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+=======
 # 100.times do
 #   Toy.create!(
 #     name: Faker::Games::Pokemon.name,
@@ -129,6 +149,7 @@ toy.photos.attach(io: file, filename: "#{toy.name}.png", content_type: "image/pn
 file = URI.open("https://m.media-amazon.com/images/I/41q0M4o2-nL._SL500_.jpg")
 toy = Toy.create!(name: Faker::Book.title, description: Faker::Quote.famous_last_words, price: prices.sample.to_i, user: users.sample)
 toy.photos.attach(io: file, filename: "#{toy.name}.png", content_type: "image/png")
+>>>>>>> 959d3c25bafdf1164544e959a7d91cbacccc5c35
 
 toys = Toy.all
 puts "#{toys.count} toys created"
