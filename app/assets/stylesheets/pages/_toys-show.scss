@@ -1,0 +1,35 @@
+.carousel-image {
+  object-fit: cover;
+}
+
+.carousel-inner {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.toy-buttons {
+  margin: 5px;
+}
+
+.toy-container {
+  margin-top: 20px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.toy-details {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 20px 20px 0px;
+}
+
+.toy-price {
+  background: #ffe477;
+  font-weight: bold;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.toy-options {
+  padding: 20px;
+}
