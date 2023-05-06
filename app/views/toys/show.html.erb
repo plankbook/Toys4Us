@@ -6,18 +6,45 @@
 <%#= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 
 <div class='container'>
-  <% @toy.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
+  <%# <% @toy.photos.each do |photo| %>
+    <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <%# <% end %>
+
+  <div id="toyCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#toyCarousel" data-slide-to="0" class="active"></li>
+      <% (@toy.photos.length-1).times do |i| %>
+        <li data-target="#toyCarousel" data-slide-to=<%=i+1%>></li>
+      <% end %>
+    </ol>
+    <div class="carousel-inner">
+      <% @toy.photos.each_with_index do |photo, i| %>
+          <div class="<%= i > 0 ? "carousel-item" : "carousel-item active" %>">
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "d-block w-100"%>
+          </div>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#toyCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#toyCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
   <h1><%= @toy.name %></h1>
   <p><%= "Description: #{@toy.description}" %></p>
   <p><% if @toy.listed %>
       <%= p "This toy is listed for bookings and it costs $#{@toy.price}." %>
     <% end %>
   </p>
+
+
   <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <%= link_to "Update Toy", edit_toy_path(@toy) %>
   <%= link_to "Book Toy", new_toy_booking_path(@toy) %>
   <%= link_to "Back to My Toys", toys_path %>
-<%# raise %>
 </div>
