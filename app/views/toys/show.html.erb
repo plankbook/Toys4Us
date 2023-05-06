@@ -5,12 +5,12 @@
 <%#= @toy.name %>
 <%#= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 
-<div class='container'>
+<div class='container d-flex toy-container'>
   <%# <% @toy.photos.each do |photo| %>
     <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <%# <% end %>
 
-  <div id="toyCarousel" class="carousel slide" data-ride="carousel">
+  <div id="toyCarousel" class="carousel slide m-5" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#toyCarousel" data-slide-to="0" class="active"></li>
       <% (@toy.photos.length-1).times do |i| %>
@@ -20,7 +20,7 @@
     <div class="carousel-inner">
       <% @toy.photos.each_with_index do |photo, i| %>
           <div class="<%= i > 0 ? "carousel-item" : "carousel-item active" %>">
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "d-block w-100"%>
+            <%= cl_image_tag photo.key, width: 600, crop: :fill, class: "carousel-image d-block w-100"%>
           </div>
       <% end %>
     </div>
@@ -34,17 +34,31 @@
     </a>
   </div>
 
+  <div class="m-5">
+      <h1><%= @toy.name %></h1>
 
-  <h1><%= @toy.name %></h1>
-  <p><%= "Description: #{@toy.description}" %></p>
-  <p><% if @toy.listed %>
-      <%= p "This toy is listed for bookings and it costs $#{@toy.price}." %>
-    <% end %>
-  </p>
+      <div class="toy-details">
+        <p><%= @toy.description %></p>
+      </div>
+      <div class="toy-options">
+        <div>
+          <p>
+            <% if @toy.listed %>
+              <%= "Available for "%>
+              <span class="toy-price"><%="$#{@toy.price}" %></span>
+            <% else %>
+              <%= "Not available 😔 "%>
+            <% end %>
+          </p>
+        </div>
 
-
-  <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <%= link_to "Update Toy", edit_toy_path(@toy) %>
-  <%= link_to "Book Toy", new_toy_booking_path(@toy) %>
-  <%= link_to "Back to My Toys", toys_path %>
+        <div>
+          <% unless current_user.toys.where(id: params[:id]).empty? %>
+            <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat toy-buttons" %>
+            <%= link_to "Update Toy", edit_toy_path(@toy), class: "btn btn-flat toy-buttons" %>
+          <% end %>
+          <%= link_to "Book Toy", new_toy_booking_path(@toy), class: "btn btn-flat toy-buttons" %>
+        </div>
+      </div>
+  </div>
 </div>
