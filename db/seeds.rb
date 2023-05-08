@@ -22,6 +22,7 @@ toy.save
 puts"Create new users..."
 5.times do
     user = User.create!(
+        name: "#{Faker::Music.chord}",
         email: "#{Faker::Music.chord}@gmail.com",
         password: '1fowest1'
     )
