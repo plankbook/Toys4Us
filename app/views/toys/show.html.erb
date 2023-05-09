@@ -68,15 +68,16 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title"><%= "You're about to book #{@toy.name}" %></h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <h3 class="modal-title"><%= "You're about to book:" %></h3>
+                  <h3><%= "#{@toy.name}" %><h3>
+
                   </button>
                 </div>
 
-                <div>
+                <div style="text-align: center">
                   <br>
-                  <h3><%= "Please pick the dates." %></h3>
-                  <div style="width:250px;text-align: center;">
+                  <h5><%= "Please pick the dates." %></h5>
+                  <div style="width:250px;text-align: center;margin: 0 auto">
                     <%= simple_form_for [@toy, @booking] do |f| %>
                       <%= f.input :start_date, label: 'Start Date', html5: true %>
                       <%= f.input :end_date, label: 'End Date', html5: true %>
