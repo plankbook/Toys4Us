@@ -5,11 +5,32 @@
 <div class='container'>
   <div class="cards">
     <div class="card-trip" style='background-image: url(fireworks2.jpg);background-size: cover;'>
-        <div class="card-trip-infos">
-          <div>
-            <h1><%= link_to "Create a New Toy", new_toy_path %></h1>
+      <div class="card-trip-infos">
+        <div>
+          <button><h1 data-bs-toggle="modal" data-bs-target="#newToy">Create a New Toy</h1></button>
+        </div>
+      </div>
+
+      <div class="modal fade" id="newToy" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">"Create new toy"</h5>
+            </div>
+
+            <div>
+              <div style="width:250px;text-align: center;">
+                <%= simple_form_for [@toy] do |f| %>
+                  <%= f.input :name, label: 'Toy Name', error: 'Toy Name is mandatory, please specify one' %>
+                  <%= f.input :description, label: 'Toy Description' %>                    <%= f.input :price, label: 'Price' %>
+                  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
     </div>
 
     <% @user_toys.each do |toy| %>
@@ -30,3 +51,4 @@
       <% end %>
   </div>
 </div>
+
