@@ -15,14 +15,15 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">"Create new toy"</h5>
+              <h5 class="modal-title">Create a new toy</h5>
             </div>
 
             <div>
-              <div style="width:250px;text-align: center;">
+              <div style="width:250px;text-align: center;margin:0 auto">
                 <%= simple_form_for [@toy] do |f| %>
                   <%= f.input :name, label: 'Toy Name', error: 'Toy Name is mandatory, please specify one' %>
-                  <%= f.input :description, label: 'Toy Description' %>                    <%= f.input :price, label: 'Price' %>
+                  <%= f.input :description, label: 'Toy Description' %>
+                  <%= f.input :price, label: 'Price' %>
                   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
                   <%= f.button :submit %>
                 <% end %>
@@ -35,7 +36,12 @@
 
     <% @user_toys.each do |toy| %>
       <div class="card-trip">
+      <% if toy.photos.first.nil? %>
+        <%= image_tag 'placeholder.png', crop: :fill %>
+      <% else %>
         <%= cl_image_tag toy.photos.first.key, crop: :fill %>
+      <% end %>
+
         <div class="card-trip-infos">
           <div>
             <h2><%= link_to toy.name, toy_path(toy) %></h2>
@@ -51,4 +57,3 @@
       <% end %>
   </div>
 </div>
-
