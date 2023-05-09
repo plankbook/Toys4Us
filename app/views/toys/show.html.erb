@@ -57,7 +57,36 @@
             <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat toy-buttons" %>
             <%= link_to "Update Toy", edit_toy_path(@toy), class: "btn btn-flat toy-buttons" %>
           <% end %>
-          <%= link_to "Book Toy", new_toy_booking_path(@toy), class: "btn btn-flat toy-buttons" %>
+          <%#= link_to "Book Toy", new_toy_booking_path(@toy), class: "btn btn-flat toy-buttons" %>
+
+            <!-- Button trigger modal -->
+          <button type="button" class="btn btn-flat toy-buttons" data-bs-toggle="modal" data-bs-target="#newBooking">
+            Book now!
+          </button>
+
+          <div class="modal fade" id="newBooking" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title"><%= "You're about to book #{@toy.name}" %></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  </button>
+                </div>
+
+                <div>
+                  <br>
+                  <h3><%= "Please pick the dates." %></h3>
+                  <div style="width:250px;text-align: center;">
+                    <%= simple_form_for [@toy, @booking] do |f| %>
+                      <%= f.input :start_date, label: 'Start Date', html5: true %>
+                      <%= f.input :end_date, label: 'End Date', html5: true %>
+                      <%= f.button :submit %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
   </div>
