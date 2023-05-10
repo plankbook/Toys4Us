@@ -51,7 +51,8 @@
           </div>
 
           <%#= link_to image_tag("delete.jpg"), toy_path(toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class => "card-trip-user avatar-bordered" %>
-          <a data-turbo-method="delete" data-turbo-confirm="Are you sure?" href="/toys/27"><img src="/assets/delete.jpg" class="card-trip-user avatar-bordered" ></a>
+
+          <a data-turbo-method="delete" data-turbo-confirm="Are you sure?" href='<%= toy_path(toy)%>'><img src="/assets/delete.jpg" class="card-trip-user avatar-bordered" ></a>
         </div>
       </div>
       <% end %>
