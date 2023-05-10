@@ -42,14 +42,18 @@
       <div class="card-trip">
 
         <% toy.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, crop: :fill %>
+          <%= link_to toy_path(toy) do %>
+            <%= cl_image_tag photo.key, crop: :fill %>
+          <% end %>
         <% end %>
         <div class="card-trip-infos">
-          <div>
+          <div style="width: 70%;">
             <h2><%= link_to toy.name, toy_path(toy) %></h2>
-            <p><%= toy.description %></p>
+            <p style="overflow-wrap: break-word;"><%= toy.description %></p>
           </div>
-          <h2 class="card-trip-pricing">$ <%= toy.price %></h2>
+          <div>
+            <h2 class="card-trip-pricing">$ <%= sprintf('%.2f',toy.price.round(2)) %></h2>
+          </div>
           <img src="https://i.stack.imgur.com/RoPPo.jpg" class="card-trip-user avatar-bordered" />
         </div>
       </div>
