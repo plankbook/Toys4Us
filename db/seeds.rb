@@ -15,10 +15,13 @@ User.delete_all
 
 puts "Create new users..."
 5.times do
-  User.create!(
-    email: "#{Faker::Music.chord}@gmail.com",
-    password: '1fowest1'
-  )
+
+    user = User.create!(
+        name: "#{Faker::Music.chord}",
+        email: "#{Faker::Music.chord}@gmail.com",
+        password: '1fowest1'
+    )
+
 end
 users = User.all
 puts "#{User.count} users created"
