@@ -45,7 +45,7 @@
           <p>
             <% if @toy.listed %>
               <%= "Available for "%>
-              <span class="toy-price"><%="$#{@toy.price}" %></span>
+              <span class="toy-price"><%= sprintf('%.2f',@toy.price.round(2)) %></span>
             <% else %>
               <%= "Not available 😔 "%>
             <% end %>
@@ -55,15 +55,19 @@
         <div>
           <% unless current_user.toys.where(id: params[:id]).empty? %>
             <%= link_to "Delete Toy", toy_path(@toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-flat toy-buttons" %>
-            <%= link_to "Update Toy", edit_toy_path(@toy), class: "btn btn-flat toy-buttons" %>
+            <%#= link_to "Update Toy", edit_toy_path(@toy), class: "btn btn-flat toy-buttons" %>
           <% end %>
-          <%#= link_to "Book Toy", new_toy_booking_path(@toy), class: "btn btn-flat toy-buttons" %>
+          <% if @toy.user == current_user %>
+            <button type="button" class="btn btn-flat toy-buttons" data-bs-toggle="modal" data-bs-target="#updateToy">
+              Update Toy
+            </button>
 
-            <!-- Button trigger modal -->
+          <% else %>
+
           <button type="button" class="btn btn-flat toy-buttons" data-bs-toggle="modal" data-bs-target="#newBooking">
             Book now!
           </button>
-
+          <% end %>
           <div class="modal fade" id="newBooking" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -71,7 +75,6 @@
                   <h3 class="modal-title"><%= "You're about to book:" %></h3>
                   <h3><%= "#{@toy.name}" %><h3>
 
-                  </button>
                 </div>
 
                 <div style="text-align: center">
@@ -88,6 +91,36 @@
               </div>
             </div>
           </div>
+
+          <div class="modal fade" id="updateToy" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title"><%= "You're about to book:" %></h3>
+                  <h3><%= "#{@toy.name}" %><h3>
+
+                  </button>
+                </div>
+
+                <div style="text-align: center">
+                  <br>
+                  <h5><%= "Update your toy." %></h5>
+                  <div style="width:250px;text-align: center;margin: 0 auto">
+
+
+                    <%= simple_form_for @toy do |f| %>
+                      <%= f.input :name, label: 'Toy Name', error: 'Toy Name is mandatory, please specify one' %>
+                      <%= f.input :description, label: 'Toy Description' %>
+                      <%= f.input :price, label: 'Price' %>
+                      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+                      <%= f.button :submit %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
   </div>
