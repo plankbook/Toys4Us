@@ -16,6 +16,9 @@
 <%# <%= link_to "Start now", "#", class: "btn btn-gradient" %>
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(banner-background.jpg);">
+  <div class="container" id="logo"  >
+    Toys 4 Us
+  </div>
   <div class="container">
     <h1>
       <% if user_signed_in? %>
@@ -37,13 +40,20 @@
   <div class="cards" id='all-toys'>
     <% @available_toys.each do |toy| %>
       <div class="card-trip">
-        <img src="/assets/toy.jpg" />
+
+        <% toy.photos.each do |photo| %>
+          <%= link_to toy_path(toy) do %>
+            <%= cl_image_tag photo.key, crop: :fill %>
+          <% end %>
+        <% end %>
         <div class="card-trip-infos">
-          <div>
+          <div style="width: 70%;">
             <h2><%= link_to toy.name, toy_path(toy) %></h2>
-            <p><%= toy.description %></p>
+            <p style="overflow-wrap: break-word;"><%= toy.description %></p>
           </div>
-          <h2 class="card-trip-pricing">$ <%= toy.price %></h2>
+          <div>
+            <h2 class="card-trip-pricing">$ <%= sprintf('%.2f',toy.price.round(2)) %></h2>
+          </div>
           <img src="https://i.stack.imgur.com/RoPPo.jpg" class="card-trip-user avatar-bordered" />
         </div>
       </div>

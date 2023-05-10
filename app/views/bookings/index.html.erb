@@ -1,12 +1,24 @@
-<div class='container'>
-<h1>My Bookings</h1>
-  <ul>
-    <% @user_bookings.each do |booking| %>
-    <li>
-      <%= "You have booked #{booking.toy.name} between #{booking.start_date} and #{booking.end_date}" %>
-    </li>
-    <% end %>
-  </ul>
+<div class="card-category" style="background-image: linear-gradient(rgba(250,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.freepik.com/premium-photo/warm-orange-purple-grunge-background-with-cement-faint-texture-marble-gradient_28629-604.jpg)">
+  You've booked the following toys. Have fun!
+</div>
 
-  <%= link_to "Back Home", root_path %>
+<div class='container'>
+  <div class="cards" id='all-toys'>
+    <% @user_bookings.each do |booking| %>
+      <div class="card-trip">
+        <% booking.toy.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to booking.toy.name, toy_path(booking.toy) %></h2>
+            <p>Between <%= booking.start_date %> and <%= booking.end_date %></p>
+            <%# <a href=#>🗑️ Cancel this booking</a> %>
+            <%# raise %>
+          </div>
+          <a href=# title='Cancel this booking'><img src="https://p7.hiclipart.com/preview/833/287/785/check-mark-international-red-cross-and-red-crescent-movement-american-red-cross-clip-art-red-cross-mark-download-png.jpg" class="card-trip-user avatar-bordered" /></a>
+        </div>
+      </div>
+      <% end %>
+  </div>
 </div>
