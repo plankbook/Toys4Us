@@ -15,10 +15,12 @@
             <p>Between <%= booking.start_date %> and <%= booking.end_date %></p>
             <%# <a href=#>🗑️ Cancel this booking</a> %>
             <%# raise %>
+            <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <img src="https://p7.hiclipart.com/preview/833/287/785/check-mark-international-red-cross-and-red-crescent-movement-american-red-cross-clip-art-red-cross-mark-download-png.jpg" class="card-trip-user avatar-bordered"/>
+            <% end %>
           </div>
-          <a href=# title='Cancel this booking'><img src="https://p7.hiclipart.com/preview/833/287/785/check-mark-international-red-cross-and-red-crescent-movement-american-red-cross-clip-art-red-cross-mark-download-png.jpg" class="card-trip-user avatar-bordered" /></a>
         </div>
       </div>
-      <% end %>
+    <% end %>
   </div>
 </div>

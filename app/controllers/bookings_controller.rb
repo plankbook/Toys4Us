@@ -17,10 +17,16 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.toy = @toy
     if @booking.save
-      redirect_to toy_path(@toy)
+      redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, status: :see_other
   end
 
   private
