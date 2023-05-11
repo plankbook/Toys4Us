@@ -6,7 +6,7 @@
   <div class="cards">
     <div class="card-trip">
       <button style='width:100%; height:100%;'>
-        <div class="card-trip-infos" style='background-image: url(fireworks2.jpg);background-size: cover; width:100%; height:100%;' data-bs-toggle="modal" data-bs-target="#newToy">
+        <div class="card-trip-infos" style='background-image: linear-gradient(rgba(250,0,0,0.3), rgba(0,0,0,0.3)), url(https://media1.popsugar-assets.com/files/thumbor/K2kx6kiAGwERcN0wbV3Q3R3Jcfo/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2022/09/16/781/n/24155406/1b81d14b1f6afd02_netimg7eZaNT/i/best-new-toys-2021.jpg); background-size: cover; width:100%; height:100%;' data-bs-toggle="modal" data-bs-target="#newToy">
           <div style='text-align: center; margin: auto 0; width:100%;'>
             <h1>Create a New Toy</h1>
           </div>
@@ -54,7 +54,7 @@
 
           <%#= link_to image_tag("delete.jpg"), toy_path(toy), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class => "card-trip-user avatar-bordered" %>
 
-          <a data-turbo-method="delete" data-turbo-confirm="Are you sure?" href='<%= toy_path(toy)%>'><img src="/assets/delete.jpg" class="card-trip-user avatar-bordered" ></a>
+          <a data-turbo-method="delete" data-turbo-confirm="Are you sure?" href='<%= toy_path(toy)%>'><img src="https://p7.hiclipart.com/preview/833/287/785/check-mark-international-red-cross-and-red-crescent-movement-american-red-cross-clip-art-red-cross-mark-download-png.jpg" class="card-trip-user avatar-bordered" ></a>
         </div>
       </div>
       <% end %>
